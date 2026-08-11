@@ -1,11 +1,11 @@
 .hero {
-  padding: 96px 72px 72px;
+  padding: clamp(56px, 10vw, 96px) var(--gutter) clamp(40px, 7vw, 72px);
   position: relative;
 }
 .badge {
   position: absolute;
   top: 56px;
-  right: 72px;
+  right: var(--gutter);
   width: 118px;
   height: 118px;
   border: 1.5px solid #d94f2b;
@@ -21,7 +21,7 @@
 }
 .heroTitle {
   margin: 0;
-  font: 300 100px/1 var(--font-display);
+  font: 300 clamp(38px, 7.5vw, 100px) / 1 var(--font-display);
   letter-spacing: -0.04em;
   color: var(--dark);
 }
@@ -38,7 +38,7 @@
   grid-template-columns: 1fr 1.05fr;
 }
 .left {
-  padding: 56px 60px 64px;
+  padding: clamp(36px, 6vw, 56px) clamp(24px, 5vw, 60px) clamp(36px, 6vw, 64px);
   border-right: 1px solid var(--border);
 }
 .sectionLabel {
@@ -77,12 +77,14 @@
 }
 
 .right {
-  padding: 56px 60px 64px;
+  padding: clamp(36px, 6vw, 56px) clamp(24px, 5vw, 60px) clamp(36px, 6vw, 64px);
   background: var(--dark);
 }
 .rightHead {
   display: flex;
   justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
   font: 400 10.5px/1 var(--font-mono);
   letter-spacing: 0.18em;
   color: var(--muted-4);
@@ -119,4 +121,23 @@
   margin: 20px 0 0;
   font: 400 12px/1.7 var(--font-mono);
   color: var(--muted-4);
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .left {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .examList {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .badge {
+    display: none;
+  }
 }

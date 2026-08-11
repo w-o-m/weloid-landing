@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { caseLink } from "@/lib/case-link";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: "The Lab",
+  description:
+    "The tools we build to run investigations become products: Software Autopsy™, AI Code Detox™, Health Score™ and more. Human-led today, automated piece by piece.",
+};
 
 const INSTRUMENTS = [
   {
@@ -55,7 +63,11 @@ export default function LabPage() {
         <h1 className={styles.heroTitle}>
           Every case sharpens
           <br />
-          an <span style={{ font: "italic 400 100px/1 var(--font-serif)", color: "#d94f2b" }}>instrument</span>.
+          an{" "}
+          <span style={{ font: "italic 400 clamp(38px, 7.5vw, 100px)/1 var(--font-serif)", color: "#d94f2b" }}>
+            instrument
+          </span>
+          .
         </h1>
         <p className={styles.heroLead}>
           The tools we build to run investigations become products. Human-led today, automated piece by piece,
@@ -84,7 +96,7 @@ export default function LabPage() {
           <span style={{ color: "#d94f2b" }}>continuous software health.</span>
         </span>
         <Link
-          href="/open-a-case"
+          href={caseLink("Not sure", "Interested in early access to the Weloid Lab instruments.")}
           className="btn btn-outline-orange"
           style={{ padding: "20px 36px", flex: "none" }}
         >

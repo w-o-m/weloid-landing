@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { caseLink } from "@/lib/case-link";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: "Investigate — Software Autopsy™",
+  description:
+    "Give us the repository. We'll tell you what you actually own. Fixed price, fixed timeline, executive-grade report covering architecture, security, AI-generated code and production readiness.",
+};
 
 const SECTIONS = [
   "§1 Architecture",
@@ -52,7 +60,10 @@ export default function InvestigatePage() {
           PILLAR III — INVESTIGATE · WHEN NOBODY KNOWS WHY
         </div>
         <h1 className={styles.heroTitle}>
-          Software <span style={{ font: "italic 400 104px/1 var(--font-serif)", color: "#d94f2b" }}>Autopsy™</span>
+          Software{" "}
+          <span style={{ font: "italic 400 clamp(40px, 7.8vw, 104px)/1 var(--font-serif)", color: "#d94f2b" }}>
+            Autopsy™
+          </span>
         </h1>
         <p className={styles.heroLead}>
           Give us the repository. We&apos;ll tell you what you actually own. Fixed price, fixed timeline,
@@ -94,7 +105,10 @@ export default function InvestigatePage() {
               </div>
             ))}
           </div>
-          <Link href="/open-a-case" className={styles.cta}>
+          <Link
+            href={caseLink("Autopsy only", "Give us the repository — we'll tell you what you actually own.")}
+            className={styles.cta}
+          >
             ORDER AN AUTOPSY
           </Link>
           <p className={styles.ctaNote}>

@@ -3,12 +3,12 @@
   grid-template-columns: 1fr 560px;
 }
 .left {
-  padding: 88px 64px 88px 72px;
+  padding: clamp(48px, 8vw, 88px) clamp(24px, 5vw, 64px) clamp(48px, 8vw, 88px) var(--gutter);
   border-right: 1px solid var(--border);
 }
 .heroTitle {
   margin: 0;
-  font: 300 84px/1.02 var(--font-display);
+  font: 300 clamp(36px, 6.5vw, 84px) / 1.02 var(--font-display);
   letter-spacing: -0.04em;
   color: var(--dark);
 }
@@ -42,7 +42,7 @@
 }
 
 .right {
-  padding: 64px 56px;
+  padding: clamp(40px, 7vw, 64px) clamp(24px, 5vw, 56px);
   background: var(--card);
   position: relative;
 }
@@ -167,4 +167,21 @@
   margin: 12px 0 0;
   font: 300 14px/1.6 var(--font-body);
   color: var(--muted-1);
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .left {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding-right: var(--gutter);
+  }
+}
+
+@media (max-width: 480px) {
+  .row2 {
+    grid-template-columns: 1fr;
+  }
 }

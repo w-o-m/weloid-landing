@@ -1,10 +1,10 @@
 .hero {
-  padding: 96px 72px 78px;
+  padding: clamp(56px, 10vw, 96px) var(--gutter) clamp(40px, 7vw, 78px);
 }
 .heroTitle {
   margin: 0;
   max-width: 1150px;
-  font: 300 100px/1 var(--font-display);
+  font: 300 clamp(38px, 7.5vw, 100px) / 1 var(--font-display);
   letter-spacing: -0.04em;
   color: var(--dark);
 }
@@ -40,13 +40,29 @@
 .band {
   border-top: 1px solid var(--border);
   background: var(--dark);
-  padding: 54px 72px;
+  padding: clamp(36px, 7vw, 54px) var(--gutter);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 60px;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 .bandText {
   font: 400 12px/1.9 var(--font-mono);
   color: var(--muted-6);
+}
+
+@media (max-width: 860px) {
+  .heroBottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .pillars {
+    grid-template-columns: 1fr;
+  }
+  .pillar:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
 }

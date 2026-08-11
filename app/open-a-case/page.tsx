@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 import CaseForm from "./CaseForm";
+
+export const metadata: Metadata = {
+  title: "Open a Case",
+  description:
+    "Tell us what happened. No judgement — however the codebase got this way, we've seen worse. Response within 24 hours.",
+};
 
 const EVIDENCE = [
   { label: "A git repository", tag: "ideal", color: "#8a8271" },
@@ -10,7 +17,12 @@ const EVIDENCE = [
   { label: "“The AI built it”", tag: "our specialty", color: "#d94f2b" },
 ];
 
-export default function OpenACasePage() {
+export default async function OpenACasePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ type?: string; statement?: string }>;
+}) {
+  const { type, statement } = await searchParams;
   return (
     <div className="shell noise">
       <Header active="open-a-case" />
@@ -22,7 +34,11 @@ export default function OpenACasePage() {
             CASE INTAKE — RESPONSE WITHIN 24H
           </div>
           <h1 className={styles.heroTitle}>
-            Open a <span style={{ font: "italic 400 88px/1.02 var(--font-serif)", color: "#d94f2b" }}>case</span>.
+            Open a{" "}
+            <span style={{ font: "italic 400 clamp(36px, 7vw, 88px)/1.02 var(--font-serif)", color: "#d94f2b" }}>
+              case
+            </span>
+            .
           </h1>
           <p className={styles.heroLead}>
             Tell us what happened. No judgement — however the codebase got this way, we&apos;ve seen worse.
@@ -44,7 +60,7 @@ export default function OpenACasePage() {
 
         <div className={styles.right}>
           <div className={styles.caseBadge}>CASE 0053 — YOURS</div>
-          <CaseForm />
+          <CaseForm initialCaseType={type} initialStatement={statement} />
         </div>
       </div>
 

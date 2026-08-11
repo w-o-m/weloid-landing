@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { caseLink } from "@/lib/case-link";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: "Build",
+  description:
+    "MVP to production platform, internal systems and AI products — built by people who audit AI-generated code for a living. No hallucinated dependencies. No bloat.",
+};
 
 const PILLARS = [
   {
@@ -32,7 +40,7 @@ export default function BuildPage() {
           Built like something
           <br />
           we&apos;d have to{" "}
-          <span style={{ font: "italic 400 104px/1 var(--font-serif)", color: "#d94f2b" }}>
+          <span style={{ font: "italic 400 clamp(40px, 7.7vw, 104px)/1 var(--font-serif)", color: "#d94f2b" }}>
             rescue later
           </span>{" "}
           —<br />
@@ -43,7 +51,11 @@ export default function BuildPage() {
             We spend half our lives inside other people&apos;s broken systems. It teaches you exactly how
             software fails — and therefore how to build it so it doesn&apos;t.
           </p>
-          <Link href="/open-a-case" className="btn btn-shadow" style={{ flex: "none" }}>
+          <Link
+            href={caseLink("Build", "We want to build something that doesn't exist yet.")}
+            className="btn btn-shadow"
+            style={{ flex: "none" }}
+          >
             START A BUILD
           </Link>
         </div>

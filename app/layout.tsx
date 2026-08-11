@@ -1,10 +1,29 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
+const DEFAULT_TITLE = "Weloid — Forensic Software Engineering";
+const DEFAULT_DESCRIPTION =
+  "Every broken system has a story. We find it. Then we rewrite the ending. Weloid builds, rescues and investigates software.";
+
 export const metadata: Metadata = {
-  title: "Weloid — Forensic Software Engineering",
-  description:
-    "Every broken system has a story. We find it. Then we rewrite the ending. Weloid builds, rescues and investigates software.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: DEFAULT_TITLE,
+    template: "%s — Weloid",
+  },
+  description: DEFAULT_DESCRIPTION,
+  openGraph: {
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    siteName: "Weloid",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({

@@ -4,6 +4,15 @@ import Footer from "@/components/Footer";
 import Marquee from "@/components/Marquee";
 import styles from "./page.module.css";
 
+// Campfire has no URL yet — left unlinked (plain text) until one is provided.
+const TRUSTED = [
+  { name: "D8N", url: "https://d8n.com" },
+  { name: "JustJapa", url: "https://justjapa.com" },
+  { name: "Nunki", url: "https://nunki-frontend.vercel.app/" },
+  { name: "Cybele Fleet", url: "https://dbnz28bgyxhfy.cloudfront.net/login" },
+  { name: "Campfire", url: "" },
+];
+
 const METERS = [
   { label: "Architecture", value: 72, color: "#cfc9b8" },
   { label: "Code Quality", value: 61, color: "#cfc9b8" },
@@ -97,7 +106,7 @@ export default function HomePage() {
           <p style={{ margin: 0, maxWidth: 470, font: "300 17px/1.7 var(--font-body)", color: "#57523f" }}>
             Whether it&apos;s new, half-built, growing fast, or quietly falling apart — bring us the repository.
           </p>
-          <div style={{ display: "flex", gap: 14, flex: "none" }}>
+          <div className="cta-row" style={{ flex: "none" }}>
             <Link href="/open-a-case" className="btn btn-shadow">
               SUBMIT EVIDENCE
             </Link>
@@ -113,12 +122,15 @@ export default function HomePage() {
           TRUSTED BY
         </span>
         <div className={styles.trustedNames}>
-          <span>Northlane</span>
-          <span>Ravello</span>
-          <span>Kestrel Pay</span>
-          <span>Onshore Health</span>
-          <span>Bramble</span>
-          <span>Quorum</span>
+          {TRUSTED.map((t) =>
+            t.url ? (
+              <a key={t.name} href={t.url} target="_blank" rel="noopener noreferrer">
+                {t.name}
+              </a>
+            ) : (
+              <span key={t.name}>{t.name}</span>
+            )
+          )}
         </div>
       </div>
 
@@ -165,7 +177,9 @@ export default function HomePage() {
         <div className={styles.casesHead}>
           <h2 className={styles.casesTitle}>
             Closed{" "}
-            <span style={{ font: "italic 400 60px/1 var(--font-serif)", color: "#d94f2b" }}>cases</span>
+            <span style={{ font: "italic 400 clamp(36px, 6.2vw, 60px)/1 var(--font-serif)", color: "#d94f2b" }}>
+              cases
+            </span>
           </h2>
           <span className={styles.casesNote}>ILLUSTRATIVE FILES — REAL CASES REPLACE THESE AT LAUNCH</span>
         </div>
@@ -195,7 +209,7 @@ export default function HomePage() {
           </div>
           <h2 className={styles.signatureTitle}>
             Your software isn&apos;t finished.{" "}
-            <span style={{ font: "italic 400 62px/1.04 var(--font-serif)", color: "#d94f2b" }}>
+            <span style={{ font: "italic 400 clamp(36px, 5.7vw, 62px)/1.04 var(--font-serif)", color: "#d94f2b" }}>
               We finish it.
             </span>
           </h2>

@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { caseLink } from "@/lib/case-link";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: "Scale — Engineering Teams",
+  description:
+    "Hire a ready-made engineering unit, not five separate people. Dedicated and satellite teams, from two specialist engineers to a complete product team.",
+};
 
 const SHAPES = [
   { title: "2 Engineers", desc: "Extra hands on an existing team.", active: false },
@@ -27,7 +35,13 @@ export default function ScalePage() {
         </div>
         <h1 className={styles.heroTitle}>
           Hire a ready-made{" "}
-          <span style={{ font: "italic 400 86px/1.02 var(--font-serif)", letterSpacing: "-.01em", color: "#d94f2b" }}>
+          <span
+            style={{
+              font: "italic 400 clamp(34px, 6.6vw, 86px)/1.02 var(--font-serif)",
+              letterSpacing: "-.01em",
+              color: "#d94f2b",
+            }}
+          >
             unit
           </span>
           ,<br />
@@ -74,7 +88,12 @@ export default function ScalePage() {
                 hiring, roadmap review, vendor evaluation and technical strategy.
               </p>
             </div>
-            <span className={styles.leadershipAdd}>ADD →</span>
+            <Link
+              href={caseLink("Team", "Interested in Fractional Engineering Leadership.")}
+              className={styles.leadershipAdd}
+            >
+              ADD →
+            </Link>
           </div>
         </div>
 
@@ -129,7 +148,13 @@ export default function ScalePage() {
             </div>
           </div>
 
-          <Link href="/open-a-case" className={styles.asideCta}>
+          <Link
+            href={caseLink(
+              "Team",
+              "Requesting a Rescue Team — 4 engineers (Tech Lead ×1, Backend ×2, Frontend ×1), 4–6 week engagement."
+            )}
+            className={styles.asideCta}
+          >
             REQUEST THIS TEAM
           </Link>
           <p className={styles.asideNote}>

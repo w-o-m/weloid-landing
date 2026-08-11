@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { caseLink } from "@/lib/case-link";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: "Rescue",
+  description:
+    "Your software isn't finished. We finish it. A Software Autopsy, a scored health report, then two words: fix it.",
+};
 
 const STEPS = [
   {
@@ -59,7 +67,9 @@ export default function RescuePage() {
         <h1 className={styles.heroTitle}>
           Your software isn&apos;t finished.
           <br />
-          <span style={{ font: "italic 400 100px/1 var(--font-serif)", color: "#d94f2b" }}>We finish it.</span>
+          <span style={{ font: "italic 400 clamp(38px, 8.2vw, 100px)/1 var(--font-serif)", color: "#d94f2b" }}>
+            We finish it.
+          </span>
         </h1>
         <p className={styles.heroLead}>
           Maybe you spent $30k with an agency. Maybe a freelancer disappeared. Maybe you vibe-coded 80% of the
@@ -105,14 +115,14 @@ export default function RescuePage() {
           </p>
           <div className={styles.reportBtns}>
             <Link
-              href="/open-a-case"
+              href={caseLink("Rescue", "Ready to fix it — send the team and let's start.")}
               className="btn btn-shadow"
               style={{ padding: "19px 34px", font: "500 11px/1 var(--font-heading)", letterSpacing: ".16em" }}
             >
               FIX IT
             </Link>
             <Link
-              href="/open-a-case"
+              href={caseLink("Autopsy only", "Want the Software Health Report first, before deciding on a fix.")}
               className="btn btn-outline"
               style={{ padding: "19px 34px", font: "500 11px/1 var(--font-heading)", letterSpacing: ".16em" }}
             >

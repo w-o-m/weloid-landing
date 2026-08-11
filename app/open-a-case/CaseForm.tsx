@@ -7,8 +7,15 @@ const CASE_TYPES = ["Rescue", "Build", "Autopsy only", "Team", "Not sure"];
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-export default function CaseForm() {
-  const [caseType, setCaseType] = useState("Rescue");
+type CaseFormProps = {
+  initialCaseType?: string;
+  initialStatement?: string;
+};
+
+export default function CaseForm({ initialCaseType, initialStatement }: CaseFormProps) {
+  const [caseType, setCaseType] = useState(
+    initialCaseType && CASE_TYPES.includes(initialCaseType) ? initialCaseType : "Rescue"
+  );
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const formId = useId();
@@ -103,6 +110,7 @@ export default function CaseForm() {
           name="statement"
           required
           minLength={10}
+          defaultValue={initialStatement}
           className={styles.textarea}
           placeholder="“We paid an agency $30k. They sent a zip file and stopped answering…”"
         />
