@@ -1,0 +1,210 @@
+.hero {
+  padding: 96px 72px 78px;
+  text-align: center;
+  position: relative;
+}
+.badge {
+  position: absolute;
+  top: 52px;
+  left: 72px;
+  width: 108px;
+  height: 108px;
+  border: 1.5px solid rgba(23, 21, 15, 0.35);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transform: rotate(-7deg);
+  color: #57523f;
+  opacity: 0.7;
+}
+.heroLabel {
+  font: 400 11px/1 var(--font-mono);
+  letter-spacing: 0.26em;
+  color: var(--muted-2);
+  margin-bottom: 34px;
+}
+.heroTitle {
+  margin: 0;
+  font: 300 96px/1 var(--font-display);
+  letter-spacing: -0.04em;
+  color: var(--dark);
+}
+.heroLead {
+  margin: 34px auto 0;
+  max-width: 640px;
+  font: 300 17px/1.75 var(--font-body);
+  color: var(--muted-1);
+}
+
+.steps {
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.step {
+  padding: 44px 40px;
+}
+.step:not(:last-child) {
+  border-right: 1px solid var(--border);
+}
+.step.dark {
+  background: var(--dark);
+}
+.stepHead {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+.stepNum {
+  font: italic 400 46px/1 var(--font-serif);
+  color: var(--orange);
+}
+.stepLabel {
+  font: 300 30px/1 var(--font-display);
+  letter-spacing: -0.02em;
+  color: var(--dark);
+}
+.step.dark .stepLabel {
+  color: var(--bg);
+}
+.stepDesc {
+  margin: 18px 0 0;
+  font: 300 14px/1.65 var(--font-body);
+  color: var(--muted-1);
+}
+.step.dark .stepDesc {
+  color: var(--muted-5);
+}
+
+.reportSection {
+  border-top: 1px solid var(--border);
+  padding: 78px 72px;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 64px;
+  align-items: start;
+}
+.reportHeading {
+  margin: 0;
+  font: 300 52px/1.06 var(--font-display);
+  letter-spacing: -0.03em;
+  color: var(--dark);
+}
+.reportLead {
+  margin: 24px 0 0;
+  max-width: 400px;
+  font: 300 16px/1.7 var(--font-body);
+  color: var(--muted-1);
+}
+.reportBtns {
+  margin-top: 34px;
+  display: flex;
+  gap: 12px;
+}
+.reportNote {
+  margin-top: 42px;
+  padding-top: 26px;
+  border-top: 1px dashed var(--border-4);
+  font: 400 12px/1.9 var(--font-mono);
+  color: var(--muted-2);
+}
+
+.card {
+  border: 1px solid var(--border-4);
+  background: var(--card);
+  position: relative;
+}
+.cardBadge {
+  position: absolute;
+  top: -14px;
+  right: 24px;
+  font: 600 10px/1 var(--font-mono);
+  letter-spacing: 0.2em;
+  color: var(--orange);
+  border: 1px solid var(--orange);
+  background: var(--card);
+  padding: 7px 10px;
+  transform: rotate(3deg);
+}
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--border);
+  font: 400 10.5px/1 var(--font-mono);
+  letter-spacing: 0.16em;
+  color: var(--muted-2);
+}
+.cardMeters {
+  padding: 28px;
+  display: grid;
+  gap: 17px;
+  font: 400 13px/1 var(--font-mono);
+}
+.meterRow {
+  grid-template-columns: 160px 1fr 66px;
+}
+.meterTrack {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background: rgba(23, 21, 15, 0.1);
+}
+.meterFill {
+  display: block;
+  height: 4px;
+}
+.cardSplit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--border);
+  font: 400 13px/1 var(--font-mono);
+}
+.cardSplitCell {
+  padding: 20px 28px;
+  display: flex;
+  justify-content: space-between;
+}
+.cardSplitCell:first-child {
+  border-right: 1px solid var(--border);
+}
+.statStrip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  background: rgba(23, 21, 15, 0.035);
+}
+.statCell {
+  padding: 22px 22px;
+}
+.statCell:not(:last-child) {
+  border-right: 1px solid rgba(23, 21, 15, 0.1);
+}
+.statCellNum {
+  font: 300 36px/1 var(--font-display);
+  color: var(--dark);
+}
+.statCellLabel {
+  margin-top: 8px;
+  font: 400 10px/1.4 var(--font-mono);
+  letter-spacing: 0.1em;
+  color: var(--muted-2);
+}
+
+.band {
+  border-top: 1px solid var(--border);
+  background: var(--dark);
+  padding: 60px 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+}
+.bandTitle {
+  margin: 0;
+  font: italic 400 44px/1.15 var(--font-serif);
+  color: var(--bg);
+}

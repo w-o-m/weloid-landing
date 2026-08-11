@@ -1,0 +1,122 @@
+.hero {
+  padding: 96px 72px 72px;
+  position: relative;
+}
+.badge {
+  position: absolute;
+  top: 56px;
+  right: 72px;
+  width: 118px;
+  height: 118px;
+  border: 1.5px solid #d94f2b;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transform: rotate(-8deg);
+  color: #d94f2b;
+  opacity: 0.85;
+}
+.heroTitle {
+  margin: 0;
+  font: 300 100px/1 var(--font-display);
+  letter-spacing: -0.04em;
+  color: var(--dark);
+}
+.heroLead {
+  margin: 32px 0 0;
+  max-width: 560px;
+  font: 300 17px/1.7 var(--font-body);
+  color: var(--muted-1);
+}
+
+.grid {
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+}
+.left {
+  padding: 56px 60px 64px;
+  border-right: 1px solid var(--border);
+}
+.sectionLabel {
+  font: 400 11px/1 var(--font-mono);
+  letter-spacing: 0.24em;
+  color: var(--muted-2);
+  margin-bottom: 30px;
+}
+.examList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font: 400 13px/1 var(--font-mono);
+  color: var(--muted-11);
+}
+.examItem {
+  padding: 15px 0;
+  border-bottom: 1px dashed var(--border-2);
+}
+.examItem.noBorder {
+  border-bottom: none;
+}
+.noteBox {
+  margin-top: 40px;
+  padding: 26px 28px;
+  border: 1px solid var(--border-3);
+  background: var(--card);
+}
+.noteTitle {
+  font: italic 400 22px/1.25 var(--font-serif);
+  color: var(--dark);
+}
+.noteDesc {
+  margin: 10px 0 0;
+  font: 300 13.5px/1.6 var(--font-body);
+  color: var(--muted-1);
+}
+
+.right {
+  padding: 56px 60px 64px;
+  background: var(--dark);
+}
+.rightHead {
+  display: flex;
+  justify-content: space-between;
+  font: 400 10.5px/1 var(--font-mono);
+  letter-spacing: 0.18em;
+  color: var(--muted-4);
+  margin-bottom: 26px;
+}
+.quotes {
+  display: grid;
+  gap: 0;
+  font: italic 400 21px/1.4 var(--font-serif);
+  color: var(--muted-7);
+}
+.quote {
+  padding: 19px 0;
+  border-bottom: 1px solid var(--dark-border);
+}
+.quote.noBorder {
+  border-bottom: none;
+}
+.cta {
+  display: block;
+  margin-top: 36px;
+  padding: 20px 0;
+  background: var(--orange);
+  color: var(--dark);
+  text-align: center;
+  font: 500 12px/1 var(--font-heading);
+  letter-spacing: 0.18em;
+  transition: background 0.15s;
+}
+.cta:hover {
+  background: var(--bg);
+}
+.ctaNote {
+  margin: 20px 0 0;
+  font: 400 12px/1.7 var(--font-mono);
+  color: var(--muted-4);
+}

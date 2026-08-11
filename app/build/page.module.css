@@ -1,0 +1,52 @@
+.hero {
+  padding: 96px 72px 78px;
+}
+.heroTitle {
+  margin: 0;
+  max-width: 1150px;
+  font: 300 100px/1 var(--font-display);
+  letter-spacing: -0.04em;
+  color: var(--dark);
+}
+.heroBottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 52px;
+  gap: 60px;
+}
+
+.pillars {
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.pillar {
+  padding: 42px 40px;
+}
+.pillar:not(:last-child) {
+  border-right: 1px solid var(--border);
+}
+.pillarTitle {
+  font: italic 400 26px/1.2 var(--font-serif);
+  color: var(--dark);
+}
+.pillarDesc {
+  margin: 14px 0 0;
+  font: 300 14px/1.65 var(--font-body);
+  color: var(--muted-1);
+}
+
+.band {
+  border-top: 1px solid var(--border);
+  background: var(--dark);
+  padding: 54px 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+}
+.bandText {
+  font: 400 12px/1.9 var(--font-mono);
+  color: var(--muted-6);
+}

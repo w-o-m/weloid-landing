@@ -1,0 +1,148 @@
+import Link from "next/link";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import styles from "./page.module.css";
+
+const SHAPES = [
+  { title: "2 Engineers", desc: "Extra hands on an existing team.", active: false },
+  { title: "Product Squad", desc: "Design, build and ship a product line.", active: false },
+  { title: "Satellite Team", desc: "A full product team operating alongside yours.", active: false },
+  { title: "Specialist Team", desc: "One hard domain, done properly.", active: false },
+  { title: "Rescue Team", desc: "Inherit and finish troubled software.", active: true },
+  { title: "Custom Team", desc: "Tell us the problem, we compose it.", active: false },
+];
+
+const FILLED_ROLES = ["Tech Lead ×1", "Backend ×2", "Frontend ×1"];
+const GHOST_ROLES = ["+ Mobile", "+ DevOps", "+ QA", "+ Product / Design", "+ AI / Data", "+ Security", "+ Payments"];
+
+export default function ScalePage() {
+  return (
+    <div className="shell noise">
+      <Header active="scale" />
+
+      <div className={styles.hero}>
+        <div className="eyebrow" style={{ marginBottom: 38 }}>
+          <span className="dash" />
+          DEDICATED &amp; SATELLITE ENGINEERING TEAMS
+        </div>
+        <h1 className={styles.heroTitle}>
+          Hire a ready-made{" "}
+          <span style={{ font: "italic 400 86px/1.02 var(--font-serif)", letterSpacing: "-.01em", color: "#d94f2b" }}>
+            unit
+          </span>
+          ,<br />
+          not five separate people.
+        </h1>
+        <p className={styles.heroLead}>
+          Build a Weloid engineering team around your problem. From two specialist engineers to a complete
+          satellite product team.
+        </p>
+      </div>
+
+      <div className={styles.grid}>
+        <div className={styles.left}>
+          <div className={styles.stepLabel}>1 — START FROM A SHAPE</div>
+          <div className={styles.shapeGrid}>
+            {SHAPES.map((s) => (
+              <div key={s.title} className={`${styles.shapeCard}${s.active ? ` ${styles.active}` : ""}`}>
+                <div className={styles.shapeTitle}>{s.title}</div>
+                <div className={styles.shapeDesc}>{s.desc}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.stepLabel}>2 — ADD THE ROLES</div>
+          <div className={styles.roles}>
+            {FILLED_ROLES.map((r) => (
+              <span key={r} className={styles.roleFilled}>
+                {r}
+              </span>
+            ))}
+            {GHOST_ROLES.map((r) => (
+              <span key={r} className={styles.roleGhost}>
+                {r}
+              </span>
+            ))}
+          </div>
+
+          <div className={styles.stepLabel}>3 — OR BORROW LEADERSHIP INSTEAD</div>
+          <div className={styles.leadershipBox}>
+            <div>
+              <div className={styles.leadershipTitle}>Fractional Engineering Leadership</div>
+              <p className={styles.leadershipDesc}>
+                CTO-level direction without hiring a full-time CTO: architecture decisions, engineering process,
+                hiring, roadmap review, vendor evaluation and technical strategy.
+              </p>
+            </div>
+            <span className={styles.leadershipAdd}>ADD →</span>
+          </div>
+        </div>
+
+        <aside className={styles.aside}>
+          <div className={styles.asideBadge}>
+            <span style={{ font: "500 8px/1 var(--font-mono)", letterSpacing: ".22em" }}>WELOID</span>
+            <span
+              style={{
+                font: "600 12px/1 var(--font-heading)",
+                letterSpacing: ".12em",
+                borderTop: "1px solid #d94f2b",
+                borderBottom: "1px solid #d94f2b",
+                padding: "4px 0",
+              }}
+            >
+              UNIT
+            </span>
+            <span style={{ font: "500 8px/1 var(--font-mono)", letterSpacing: ".18em" }}>SPEC</span>
+          </div>
+
+          <div className={styles.asideLabel}>YOUR TEAM</div>
+          <div className={styles.asideTitle}>
+            Rescue Team
+            <br />
+            <span style={{ font: "italic 400 22px/1 var(--font-serif)", color: "#d94f2b" }}>4 engineers</span>
+          </div>
+
+          <div className={styles.asideList}>
+            <div className={styles.asideRow}>
+              <span>Tech Lead</span>
+              <span>1</span>
+            </div>
+            <div className={styles.asideRow}>
+              <span>Backend</span>
+              <span>2</span>
+            </div>
+            <div className={styles.asideRow}>
+              <span>Frontend</span>
+              <span>1</span>
+            </div>
+            <div className={`${styles.asideRow} ${styles.divider}`}>
+              <span>Engagement</span>
+              <span>4–6 weeks</span>
+            </div>
+            <div className={styles.asideRow}>
+              <span>Start</span>
+              <span>~10 days</span>
+            </div>
+            <div className={styles.asideRow}>
+              <span>Overlap</span>
+              <span>GMT / CET</span>
+            </div>
+          </div>
+
+          <Link href="/open-a-case" className={styles.asideCta}>
+            REQUEST THIS TEAM
+          </Link>
+          <p className={styles.asideNote}>
+            You are not buying cheaper developers. You are buying a team that can solve a difficult software
+            problem.
+          </p>
+        </aside>
+      </div>
+
+      <Footer
+        tagline="BUILD · RESCUE · INVESTIGATE · SCALE"
+        taglineStyle={{ font: "400 11px/1 var(--font-mono)", letterSpacing: ".18em", color: "#8a8271" }}
+      />
+    </div>
+  );
+}

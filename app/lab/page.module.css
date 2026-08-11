@@ -1,0 +1,83 @@
+.page {
+  background: #17150f;
+}
+.hero {
+  padding: 96px 72px 72px;
+}
+.heroTitle {
+  margin: 0;
+  max-width: 1100px;
+  font: 300 96px/1 var(--font-display);
+  letter-spacing: -0.04em;
+  color: var(--bg);
+}
+.heroLead {
+  margin: 32px 0 0;
+  max-width: 560px;
+  font: 300 17px/1.7 var(--font-body);
+  color: var(--muted-5);
+}
+
+.grid {
+  border-top: 1px solid var(--dark-border);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.cell {
+  padding: 44px 40px;
+  transition: background 0.15s;
+}
+.cell:not(:nth-child(3n)) {
+  border-right: 1px solid var(--dark-border);
+}
+.cell:hover {
+  background: var(--dark-card);
+}
+.cellHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+.cellNum {
+  font: 400 10px/1 var(--font-mono);
+  letter-spacing: 0.2em;
+  color: var(--muted-4);
+}
+.badgeService {
+  font: 500 9px/1 var(--font-heading);
+  letter-spacing: 0.16em;
+  color: var(--dark);
+  background: var(--orange);
+  padding: 5px 8px;
+}
+.badgeCalibrating {
+  font: 500 9px/1 var(--font-heading);
+  letter-spacing: 0.16em;
+  color: var(--muted-2);
+  border: 1px solid var(--muted-2);
+  padding: 4px 8px;
+}
+.cellTitle {
+  font: 300 30px/1.1 var(--font-display);
+  letter-spacing: -0.02em;
+  color: var(--bg);
+}
+.cellDesc {
+  margin: 14px 0 0;
+  font: 300 14px/1.6 var(--font-body);
+  color: var(--muted-5);
+}
+
+.band {
+  border-top: 1px solid var(--dark-border);
+  padding: 48px 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+}
+.bandText {
+  font: italic 400 30px/1.3 var(--font-serif);
+  color: var(--muted-7);
+}
