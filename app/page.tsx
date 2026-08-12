@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 
 // Campfire has no URL yet — left unlinked (plain text) until one is provided.
 const TRUSTED = [
-  { name: "D8N", url: "https://d8n.com" },
+  { name: "D8N", url: "https://d8n.tech" },
   { name: "JustJapa", url: "https://justjapa.com" },
   { name: "Nunki", url: "https://nunki-frontend.vercel.app/" },
   { name: "Cybele Fleet", url: "https://dbnz28bgyxhfy.cloudfront.net/login" },
@@ -81,7 +81,7 @@ export default function HomePage() {
           <span style={{ font: "500 9px/1 var(--font-mono)", letterSpacing: ".2em" }}>NO. 0052</span>
         </div>
 
-        <div className="eyebrow" style={{ marginBottom: 42 }}>
+        <div className={`eyebrow ${styles.heroEyebrow}`} style={{ marginBottom: 42 }}>
           <span className="dash" />
           BUILD · RESCUE · INVESTIGATE · SCALE
         </div>
@@ -181,7 +181,6 @@ export default function HomePage() {
               cases
             </span>
           </h2>
-          <span className={styles.casesNote}>ILLUSTRATIVE FILES — REAL CASES REPLACE THESE AT LAUNCH</span>
         </div>
         <div className={styles.caseGrid}>
           {CASES.map((c) => (

@@ -1,28 +1,6 @@
 import "server-only";
 import { createClient } from "@supabase/supabase-js";
-
-type CaseInsert = {
-  case_type: string;
-  statement: string;
-  name: string;
-  email: string;
-  evidence_note?: string | null;
-};
-
-type Database = {
-  public: {
-    Tables: {
-      cases: {
-        Row: CaseInsert & { id: string; created_at: string };
-        Insert: CaseInsert;
-        Update: Partial<CaseInsert>;
-        Relationships: [];
-      };
-    };
-    Views: Record<string, never>;
-    Functions: Record<string, never>;
-  };
-};
+import type { Database } from "./database.types";
 
 let client: ReturnType<typeof createClient<Database>> | null = null;
 

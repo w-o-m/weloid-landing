@@ -122,11 +122,6 @@
   letter-spacing: -0.03em;
   color: var(--dark);
 }
-.casesNote {
-  font: 400 11px/1 var(--font-mono);
-  letter-spacing: 0.18em;
-  color: var(--muted-2);
-}
 .caseGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -326,6 +321,9 @@
 }
 
 @media (max-width: 860px) {
+  .heroEyebrow :global(.dash) {
+    display: none;
+  }
   .badge {
     transform: rotate(8deg) scale(0.68);
     transform-origin: top right;
