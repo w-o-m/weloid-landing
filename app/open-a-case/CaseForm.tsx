@@ -103,7 +103,7 @@ export default function CaseForm({ initialCaseType, initialStatement }: CaseForm
 
       <div>
         <label className={styles.fieldLabel} htmlFor={`${formId}-statement`}>
-          02 — THE STATEMENT
+          02 — WHAT&apos;S HAPPENING
         </label>
         <textarea
           id={`${formId}-statement`}
@@ -146,7 +146,7 @@ export default function CaseForm({ initialCaseType, initialStatement }: CaseForm
 
       <div>
         <label className={styles.fieldLabel} htmlFor={`${formId}-evidence`}>
-          05 — THE EVIDENCE (OPTIONAL)
+          05 — REPOSITORY OR CONTEXT (OPTIONAL)
         </label>
         <input
           id={`${formId}-evidence`}
@@ -168,7 +168,7 @@ export default function CaseForm({ initialCaseType, initialStatement }: CaseForm
       </button>
 
       <div className={styles.submitFootnote}>
-        Read within 24h by an engineer, not a bot.
+        Read within 24h by a real engineer, not a bot.
         <br />
         NDA available before you share anything.
       </div>

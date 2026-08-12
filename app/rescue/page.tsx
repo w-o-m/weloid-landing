@@ -3,13 +3,33 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { caseLink } from "@/lib/case-link";
+import ServiceFaq from "@/components/ServiceFaq";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Rescue",
+  title: "Software Rescue and MVP Recovery",
   description:
     "Your software isn't finished. We finish it. A Software Autopsy, a scored health report, then two words: fix it.",
+  alternates: { canonical: "/rescue" },
 };
+
+const FAQS = [
+  {
+    question: "What is software rescue?",
+    answer:
+      "Software rescue is the structured process of understanding, stabilizing and finishing an existing application that is abandoned, unreliable, incomplete or difficult to maintain.",
+  },
+  {
+    question: "Do you rewrite the whole application?",
+    answer:
+      "Not automatically. Weloid starts with an evidence-based Software Autopsy, then recommends the smallest appropriate solution: targeted remediation, completion, modernization or a rewrite where the evidence supports it.",
+  },
+  {
+    question: "What happens before the rescue work begins?",
+    answer:
+      "The repository, architecture, dependencies, security, database, infrastructure, tests and unfinished features are examined. You receive a scored report and a prioritized recovery plan before treatment begins.",
+  },
+];
 
 const STEPS = [
   {
@@ -72,9 +92,7 @@ export default function RescuePage() {
           </span>
         </h1>
         <p className={styles.heroLead}>
-          Maybe you spent $30k with an agency. Maybe a freelancer disappeared. Maybe you vibe-coded 80% of the
-          product and cannot get the remaining 20% working. Maybe the MVP works but you&apos;re terrified of
-          putting real customers on it.
+          Maybe you spent $30k with an agency and received a zip file. Maybe a freelancer disappeared. Maybe you built 80% of the product with AI and cannot get the remaining 20% working. Maybe the MVP demos well but you&apos;re not ready to put real customers on it.
         </p>
       </div>
 
@@ -98,7 +116,7 @@ export default function RescuePage() {
               </span>
             </span>
           </div>
-          <p className={styles.stepDesc}>Fixed scope, fixed window, the team we would put on it. Say the words and we start.</p>
+          <p className={styles.stepDesc}>A prioritized recovery plan, fixed scope and a defined delivery window. You decide whether to execute it yourself or have us start.</p>
         </div>
       </div>
 
@@ -110,8 +128,7 @@ export default function RescuePage() {
             Health <span style={{ font: "italic 400 54px/1.06 var(--font-serif)", color: "#d94f2b" }}>Report</span>
           </h2>
           <p className={styles.reportLead}>
-            Every finding with severity, effort and the order we would tackle it in. Plus an AI-bloat
-            inventory: what the AI actually built, what is unnecessary, and what should never reach production.
+            Every finding includes severity, effort and the order we would tackle it in. The report also shows what the AI built, what is unnecessary, and what should never reach production.
           </p>
           <div className={styles.reportBtns}>
             <Link
@@ -130,9 +147,9 @@ export default function RescuePage() {
             </Link>
           </div>
           <div className={styles.reportNote}>
-            Later: connect GitHub / GitLab →<br />
-            automated analysis + human review →<br />
-            continuous software-health monitoring.
+            Diagnosis first →<br />
+            prioritized recovery plan →<br />
+            optional implementation by Weloid.
           </div>
         </div>
 
@@ -187,9 +204,11 @@ export default function RescuePage() {
           className="btn btn-orange-solid"
           style={{ padding: "22px 44px", flex: "none" }}
         >
-          START WITH THE AUTOPSY
+          START WITH THE SOFTWARE AUDIT
         </Link>
       </div>
+
+      <ServiceFaq items={FAQS} />
 
       <Footer
         tagline="Bring us the repository."

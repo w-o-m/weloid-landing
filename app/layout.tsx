@@ -6,6 +6,22 @@ const DEFAULT_TITLE = "Weloid — Forensic Software Engineering";
 const DEFAULT_DESCRIPTION =
   "Every broken system has a story. We find it. Then we rewrite the ending. Weloid builds, rescues and investigates software.";
 
+const ORGANIZATION_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Weloid",
+  url: SITE_URL,
+  description: DEFAULT_DESCRIPTION,
+  areaServed: "Worldwide",
+  serviceType: [
+    "Custom software development",
+    "Software rescue",
+    "Software audits",
+    "Technical investigations",
+    "Dedicated engineering teams",
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -18,11 +34,14 @@ export const metadata: Metadata = {
     description: DEFAULT_DESCRIPTION,
     siteName: "Weloid",
     type: "website",
+    url: SITE_URL,
+    images: [{ url: "/opengraph-image" }],
   },
   twitter: {
     card: "summary_large_image",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
+    images: ["/opengraph-image"],
   },
 };
 
@@ -45,7 +64,13 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <main>{children}</main>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_SCHEMA) }}
+        />
+      </body>
     </html>
   );
 }

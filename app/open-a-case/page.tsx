@@ -5,9 +5,10 @@ import styles from "./page.module.css";
 import CaseForm from "./CaseForm";
 
 export const metadata: Metadata = {
-  title: "Open a Case",
+  title: "Contact Weloid About a Software Problem",
   description:
-    "Tell us what happened. No judgement — however the codebase got this way, we've seen worse. Response within 24 hours.",
+    "Tell Weloid what is happening with your software. No polished brief required. A real engineer reviews every submission and responds within 24 hours.",
+  alternates: { canonical: "/open-a-case" },
 };
 
 const EVIDENCE = [
@@ -31,20 +32,20 @@ export default async function OpenACasePage({
         <div className={styles.left}>
           <div className="eyebrow" style={{ marginBottom: 38 }}>
             <span className="dash" />
-            CASE INTAKE — RESPONSE WITHIN 24H
+            CASE INTAKE — A REAL ENGINEER RESPONDS WITHIN 24H
           </div>
           <h1 className={styles.heroTitle}>
-            Open a{" "}
+            Tell us what&apos;s{" "}
             <span style={{ font: "italic 400 clamp(36px, 7vw, 88px)/1.02 var(--font-serif)", color: "#d94f2b" }}>
-              case
+              happening
             </span>
             .
           </h1>
           <p className={styles.heroLead}>
-            Tell us what happened. No judgement — however the codebase got this way, we&apos;ve seen worse.
+            Tell us what is happening, what you have, and what needs to change. You do not need a polished brief. We&apos;ll review the situation and recommend the most sensible next step.
           </p>
 
-          <div className={styles.evidenceLabel}>EVIDENCE ACCEPTED</div>
+          <div className={styles.evidenceLabel}>WHAT YOU CAN SEND US</div>
           <div className={styles.evidenceList}>
             {EVIDENCE.map((e, i) => (
               <div

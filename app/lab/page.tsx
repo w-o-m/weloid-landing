@@ -6,9 +6,10 @@ import { caseLink } from "@/lib/case-link";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "The Lab",
+  title: "Software Health and Engineering Tools",
   description:
     "The tools we build to run investigations become products: Software Autopsy™, AI Code Detox™, Health Score™ and more. Human-led today, automated piece by piece.",
+  alternates: { canonical: "/lab" },
 };
 
 const INSTRUMENTS = [
@@ -58,7 +59,7 @@ export default function LabPage() {
       <div className={styles.hero}>
         <div className="eyebrow on-dark" style={{ marginBottom: 40 }}>
           <span className="dash" />
-          THE LAB — WHERE THE PRACTICE BECOMES INSTRUMENTS
+          THE LAB — WHERE THE PRACTICE BECOMES TOOLS
         </div>
         <h1 className={styles.heroTitle}>
           Every case sharpens
@@ -70,8 +71,7 @@ export default function LabPage() {
           .
         </h1>
         <p className={styles.heroLead}>
-          The tools we build to run investigations become products. Human-led today, automated piece by piece,
-          eventually self-serve.
+          The tools we build for investigations become products. Software Autopsy™ and AI Code Detox™ are available through human-led engagements today; other instruments are still in development.
         </p>
       </div>
 
@@ -92,15 +92,15 @@ export default function LabPage() {
 
       <div className={styles.band}>
         <span className={styles.bandText}>
-          Later: connect GitHub → automated analysis + human review →{" "}
-          <span style={{ color: "#d94f2b" }}>continuous software health.</span>
+          TODAY: HUMAN-LED INVESTIGATIONS → AUTOMATED ANALYSIS →{" "}
+          <span style={{ color: "#d94f2b" }}>CONTINUOUS SOFTWARE HEALTH.</span>
         </span>
         <Link
           href={caseLink("Not sure", "Interested in early access to the Weloid Lab instruments.")}
           className="btn btn-outline-orange"
           style={{ padding: "20px 36px", flex: "none" }}
         >
-          GET EARLY ACCESS
+          ASK ABOUT THE LAB
         </Link>
       </div>
 

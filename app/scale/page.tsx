@@ -3,13 +3,28 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { caseLink } from "@/lib/case-link";
+import ServiceFaq from "@/components/ServiceFaq";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Scale — Engineering Teams",
+  title: "Dedicated Engineering Teams",
   description:
     "Hire a ready-made engineering unit, not five separate people. Dedicated and satellite teams, from two specialist engineers to a complete product team.",
+  alternates: { canonical: "/scale" },
 };
+
+const FAQS = [
+  {
+    question: "What is a dedicated engineering team?",
+    answer:
+      "A dedicated engineering team is a managed group of specialists assembled around a defined product or technical problem, rather than a collection of unrelated individual contractors.",
+  },
+  {
+    question: "Can Weloid work alongside our existing team?",
+    answer:
+      "Yes. Weloid can provide a satellite team or specialist engineers who operate alongside your organization, repository, processes and working hours.",
+  },
+];
 
 const SHAPES = [
   { title: "2 Engineers", desc: "Extra hands on an existing team.", active: false },
@@ -34,7 +49,7 @@ export default function ScalePage() {
           DEDICATED &amp; SATELLITE ENGINEERING TEAMS
         </div>
         <h1 className={styles.heroTitle}>
-          Hire a ready-made{" "}
+          Hire a ready-made engineering{" "}
           <span
             style={{
               font: "italic 400 clamp(34px, 6.6vw, 86px)/1.02 var(--font-serif)",
@@ -42,20 +57,19 @@ export default function ScalePage() {
               color: "#d94f2b",
             }}
           >
-            unit
+            team
           </span>
           ,<br />
           not five separate people.
         </h1>
         <p className={styles.heroLead}>
-          Build a Weloid engineering team around your problem. From two specialist engineers to a complete
-          satellite product team.
+          Add experienced engineers around a defined product or technical problem. From two specialists to a complete satellite product team, Weloid brings technical ownership without a six-month hiring process.
         </p>
       </div>
 
       <div className={styles.grid}>
         <div className={styles.left}>
-          <div className={styles.stepLabel}>1 — START FROM A SHAPE</div>
+          <div className={styles.stepLabel}>1 — CHOOSE THE TEAM YOU NEED</div>
           <div className={styles.shapeGrid}>
             {SHAPES.map((s) => (
               <div key={s.title} className={`${styles.shapeCard}${s.active ? ` ${styles.active}` : ""}`}>
@@ -65,7 +79,7 @@ export default function ScalePage() {
             ))}
           </div>
 
-          <div className={styles.stepLabel}>2 — ADD THE ROLES</div>
+          <div className={styles.stepLabel}>2 — ADD THE SPECIALISTS</div>
           <div className={styles.roles}>
             {FILLED_ROLES.map((r) => (
               <span key={r} className={styles.roleFilled}>
@@ -79,7 +93,7 @@ export default function ScalePage() {
             ))}
           </div>
 
-          <div className={styles.stepLabel}>3 — OR BORROW LEADERSHIP INSTEAD</div>
+          <div className={styles.stepLabel}>3 — OR BORROW TECHNICAL LEADERSHIP</div>
           <div className={styles.leadershipBox}>
             <div>
               <div className={styles.leadershipTitle}>Fractional Engineering Leadership</div>
@@ -143,7 +157,7 @@ export default function ScalePage() {
               <span>~10 days</span>
             </div>
             <div className={styles.asideRow}>
-              <span>Overlap</span>
+              <span>Working hours</span>
               <span>GMT / CET</span>
             </div>
           </div>
@@ -158,11 +172,12 @@ export default function ScalePage() {
             REQUEST THIS TEAM
           </Link>
           <p className={styles.asideNote}>
-            You are not buying cheaper developers. You are buying a team that can solve a difficult software
-            problem.
+            You are not buying a list of developers. You are getting a team assembled to solve a difficult software problem.
           </p>
         </aside>
       </div>
+
+      <ServiceFaq items={FAQS} />
 
       <Footer
         tagline="BUILD · RESCUE · INVESTIGATE · SCALE"

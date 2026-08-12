@@ -73,6 +73,35 @@ svg {
   width: 100%;
 }
 
+.service-faq {
+  padding: 96px var(--gutter);
+  background: var(--card);
+}
+.service-faq h2 {
+  max-width: 760px;
+  margin: 28px 0 42px;
+  font: 500 clamp(38px, 5vw, 72px)/1 var(--font-display);
+  letter-spacing: -0.04em;
+}
+.service-faq-list {
+  max-width: 900px;
+  border-top: 1px solid var(--border-3);
+}
+.service-faq details {
+  border-bottom: 1px solid var(--border-3);
+  padding: 22px 0;
+}
+.service-faq summary {
+  cursor: pointer;
+  font: 500 18px/1.4 var(--font-heading);
+}
+.service-faq p {
+  max-width: 720px;
+  margin: 14px 0 0;
+  color: var(--muted-1);
+  font: 300 17px/1.65 var(--font-body);
+}
+
 .noise {
   background-color: var(--bg);
   background-image: repeating-linear-gradient(

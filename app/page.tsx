@@ -1,10 +1,18 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Marquee from "@/components/Marquee";
 import styles from "./page.module.css";
 
-// Campfire has no URL yet — left unlinked (plain text) until one is provided.
+export const metadata: Metadata = {
+  title: "Software Engineering for Difficult Problems",
+  description:
+    "Weloid builds, rescues, investigates and scales software. Bring us a new product, broken application, unexplained failure or difficult engineering problem.",
+  alternates: { canonical: "/" },
+};
+
+// Campfire has no URL yet — left unlinked until one is provided.
 const TRUSTED = [
   { name: "D8N", url: "https://d8n.tech" },
   { name: "JustJapa", url: "https://justjapa.com" },
@@ -52,10 +60,10 @@ const CASES = [
 ];
 
 const QUADRANTS = [
-  { href: "/build", label: "BUILD", sub: "when it doesn't exist yet", active: false },
-  { href: "/rescue", label: "RESCUE", sub: "when someone else built it", active: true },
+  { href: "/build", label: "BUILD", sub: "when you need something built", active: false },
+  { href: "/rescue", label: "RESCUE", sub: "when your product is unfinished", active: true },
   { href: "/investigate", label: "INVESTIGATE", sub: "when nobody knows why", active: false },
-  { href: "/scale", label: "SCALE", sub: "when it works and must grow", active: false },
+  { href: "/scale", label: "SCALE", sub: "when you need the right team", active: false },
 ];
 
 export default function HomePage() {
@@ -87,7 +95,7 @@ export default function HomePage() {
         </div>
 
         <h1 className={styles.heroTitle}>
-          Software built right,
+          Software problems?
           <br />
           <span
             style={{
@@ -96,22 +104,20 @@ export default function HomePage() {
               color: "#d94f2b",
             }}
           >
-            fixed fast,
+            Bring us the difficult ones.
           </span>
-          <br />
-          <span style={{ color: "#c0b8a4" }}>and never a mystery.</span>
         </h1>
 
         <div className={styles.heroBottom}>
           <p style={{ margin: 0, maxWidth: 470, font: "300 17px/1.7 var(--font-body)", color: "#57523f" }}>
-            Whether it&apos;s new, half-built, growing fast, or quietly falling apart — bring us the repository.
+            Weloid builds custom software, rescues broken products, investigates technical failures, and provides engineering teams for difficult problems.
           </p>
           <div className="cta-row" style={{ flex: "none" }}>
             <Link href="/open-a-case" className="btn btn-shadow">
-              SUBMIT EVIDENCE
+              TELL US WHAT&apos;S HAPPENING
             </Link>
             <Link href="/investigate" className="btn btn-outline">
-              HOW AN AUTOPSY WORKS
+              SEE HOW THE AUDIT WORKS
             </Link>
           </div>
         </div>
@@ -119,7 +125,7 @@ export default function HomePage() {
 
       <div className={styles.trusted}>
         <span style={{ font: "400 10px/1 var(--font-mono)", letterSpacing: ".22em", color: "#8a8271", flex: "none" }}>
-          TRUSTED BY
+          SELECTED CLIENTS
         </span>
         <div className={styles.trustedNames}>
           {TRUSTED.map((t) =>
@@ -176,16 +182,16 @@ export default function HomePage() {
       <div className={styles.cases}>
         <div className={styles.casesHead}>
           <h2 className={styles.casesTitle}>
-            Closed{" "}
+            Selected{" "}
             <span style={{ font: "italic 400 clamp(36px, 6.2vw, 60px)/1 var(--font-serif)", color: "#d94f2b" }}>
-              cases
+              work
             </span>
           </h2>
         </div>
         <div className={styles.caseGrid}>
           {CASES.map((c) => (
             <div key={c.id} className={`${styles.caseCard}${c.open ? ` ${styles.open}` : ""}`}>
-              <div className={styles.caseTag}>{c.status}</div>
+              <div className={styles.caseTag}>{c.status === "OPEN" ? "IN PROGRESS" : "COMPLETED"}</div>
               <div className={styles.caseId}>{c.id}</div>
               <div className={styles.caseBody}>
                 <h3 className={styles.caseTitle}>{c.title}</h3>
@@ -213,7 +219,7 @@ export default function HomePage() {
             </span>
           </h2>
           <p className={styles.signatureLead}>
-            It starts with a Software Autopsy. Then a scored health report. Then two words: &quot;fix it.&quot;
+            We diagnose before we prescribe. First comes the Software Autopsy, then a scored health report, then a clear choice: fix it yourself or have Weloid execute the repair.
           </p>
           <Link href="/rescue" className="btn btn-cream" style={{ marginTop: 36, padding: "20px 36px" }}>
             SEE THE RESCUE PROCESS
@@ -276,10 +282,10 @@ export default function HomePage() {
 
       <div className={styles.finalCta}>
         <div className={styles.finalCtaLabel}>
-          EVIDENCE ACCEPTED: A GIT REPO · A ZIP FROM THE OLD AGENCY · PROD ACCESS + PRAYERS · &quot;THE AI BUILT IT&quot;
+          WHAT YOU CAN BRING: A GIT REPO · A ZIP FROM THE OLD AGENCY · PROD ACCESS + PRAYERS · &quot;THE AI BUILT IT&quot;
         </div>
         <h2 className={styles.finalCtaTitle}>
-          Bring us the <span style={{ color: "#d94f2b" }}>repository</span>.
+          Tell us what&apos;s <span style={{ color: "#d94f2b" }}>happening</span>.
         </h2>
         <Link href="/open-a-case" className="btn btn-dark" style={{ marginTop: 44, padding: "22px 48px" }}>
           OPEN A CASE
