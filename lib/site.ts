@@ -6,4 +6,4 @@ if (process.env.NODE_ENV === "production" && !configuredSiteUrl) {
   );
 }
 
-export const SITE_URL = configuredSiteUrl || "http://localhost:3000";
+export const SITE_URL = configuredSiteUrl || "https://weloid.com";
