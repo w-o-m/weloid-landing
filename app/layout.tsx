@@ -29,19 +29,28 @@ export const metadata: Metadata = {
     template: "%s — Weloid",
   },
   description: DEFAULT_DESCRIPTION,
+  icons: {
+    icon: [
+      { url: "/favicon/favicon.ico" },
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/favicon/apple-touch-icon.png",
+  },
+  manifest: "/favicon/site.webmanifest",
   openGraph: {
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
     siteName: "Weloid",
     type: "website",
     url: SITE_URL,
-    images: [{ url: "/opengraph-image" }],
+    images: [{ url: "/images/og-image.png" }],
   },
   twitter: {
     card: "summary_large_image",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: ["/opengraph-image"],
+    images: ["/images/og-image.png"],
   },
 };
 
