@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CONSTANTS from "@/lib/constants";
 import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
 
@@ -9,6 +10,7 @@ type Page =
   | "investigate"
   | "scale"
   | "lab"
+  | "contact"
   | "open-a-case";
 
 type HeaderProps = {
@@ -16,16 +18,8 @@ type HeaderProps = {
   theme?: "light" | "dark";
 };
 
-const LEFT_LINKS: { href: string; label: string; page: Page }[] = [
-  { href: "/build", label: "BUILD", page: "build" },
-  { href: "/rescue", label: "RESCUE", page: "rescue" },
-  { href: "/investigate", label: "INVESTIGATE", page: "investigate" },
-];
-
-const RIGHT_LINKS: { href: string; label: string; page: Page }[] = [
-  { href: "/scale", label: "SCALE", page: "scale" },
-  { href: "/lab", label: "THE LAB", page: "lab" },
-];
+const LEFT_LINKS = CONSTANTS.navigation.left;
+const RIGHT_LINKS = CONSTANTS.navigation.right;
 
 const ALL_LINKS = [...LEFT_LINKS, ...RIGHT_LINKS];
 

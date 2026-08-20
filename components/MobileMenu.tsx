@@ -10,7 +10,7 @@ export default function MobileMenu({
   active,
   onDark,
 }: {
-  links: NavLink[];
+  links: readonly NavLink[];
   active: string;
   onDark: boolean;
 }) {

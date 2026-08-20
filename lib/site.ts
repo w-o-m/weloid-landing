@@ -1,3 +1,5 @@
+import CONSTANTS from "./constants";
+
 const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
 
 if (process.env.NODE_ENV === "production" && !configuredSiteUrl) {
@@ -6,4 +8,4 @@ if (process.env.NODE_ENV === "production" && !configuredSiteUrl) {
   );
 }
 
-export const SITE_URL = configuredSiteUrl || "https://weloid.com";
+export const SITE_URL = CONSTANTS.appUrl;
