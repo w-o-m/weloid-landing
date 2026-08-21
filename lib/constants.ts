@@ -19,18 +19,19 @@ const CONSTANTS = {
       url: "https://www.linkedin.com/in/weloid-corp/",
     },
     {
-      name: "X",
-      handle: "@weloidic",
+      name: "Twitter",
+      handle: "@weloidinc",
       url: "https://x.com/weloidinc",
     },
+    // {
+    //   name: "Instagram",
+    //   handle: "@weloid",
+    //   url: "https://www.instagram.com/weloid",
+    // },
     {
-      name: "Instagram",
-      handle: "@weloid",
-      url: "https://www.instagram.com/weloid",
-    },{
       name: "Facebook",
-      handle: "@weloid",
-      url: "https://www.facebook.com/weloid",
+      handle: "@weloidinc",
+      url: "https://www.facebook.com/weloidinc",
     },
     // {
     //   name: "GitHub",
