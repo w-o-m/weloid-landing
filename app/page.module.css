@@ -63,7 +63,156 @@
 .terminal {
   background: var(--dark);
   padding: 34px 40px;
+  position: relative;
+  animation: cardSettle 13s linear infinite;
 }
+
+/* -- autopsy animation: a light in the live-badge red ignites at the top-left
+      corner, travels down the left edge, around the bottom and up the other
+      side, then the full border stays lit while the card settles inward;
+      full cycle loops every 13s -- */
+@property --trace {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 315deg;
+}
+.terminal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  pointer-events: none;
+  background: conic-gradient(
+    from var(--trace),
+    #ffd6bd 0deg,
+    #ff6b4a 14deg,
+    rgba(255, 107, 74, 0) 70deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  animation: borderTrace 13s linear infinite;
+}
+@keyframes borderTrace {
+  0% { --trace: 315deg; opacity: 1; }
+  18% { --trace: -45deg; opacity: 1; }
+  22%, 100% { --trace: -45deg; opacity: 0; }
+}
+
+/* card presses slightly inward once the border locks in */
+@keyframes cardSettle {
+  0%, 20% { transform: scale(1); }
+  27%, 86% { transform: scale(0.987); }
+  94%, 100% { transform: scale(1); }
+}
+.terminal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid rgba(232, 161, 92, 0.55);
+  box-shadow: inset 0 0 24px rgba(217, 79, 43, 0.07);
+  opacity: 0;
+  animation: rimGlow 13s linear infinite;
+}
+@keyframes rimGlow {
+  0%, 20% { opacity: 0; }
+  28% { opacity: 1; }
+  86% { opacity: 1; }
+  94%, 100% { opacity: 0; }
+}
+
+.terminalBody > div {
+  animation-duration: 13s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.terminalBody > div:nth-child(1) { animation-name: scanLine1; }
+.terminalBody > div:nth-child(2) { animation-name: scanLine2; }
+.terminalBody > div:nth-child(3) { animation-name: scanLine3; }
+.terminalBody > div:nth-child(4) { animation-name: scanLine4; }
+.terminalBody > div:nth-child(5) { animation-name: scanLine5; }
+@keyframes scanLine1 {
+  0%, 2% { opacity: 0; }
+  6%, 90% { opacity: 1; }
+  97%, 100% { opacity: 0; }
+}
+@keyframes scanLine2 {
+  0%, 7% { opacity: 0; }
+  11%, 90% { opacity: 1; }
+  97%, 100% { opacity: 0; }
+}
+@keyframes scanLine3 {
+  0%, 12% { opacity: 0; }
+  16%, 90% { opacity: 1; }
+  97%, 100% { opacity: 0; }
+}
+@keyframes scanLine4 {
+  0%, 17% { opacity: 0; }
+  21%, 89% { opacity: 1; }
+  96%, 100% { opacity: 0; }
+}
+@keyframes scanLine5 {
+  0%, 22% { opacity: 0; }
+  26%, 88% { opacity: 1; }
+  95%, 100% { opacity: 0; }
+}
+
+.liveBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #ff6b4a;
+  animation: liveOn 13s linear infinite;
+}
+.liveBadge::before { content: "["; }
+.liveBadge::after { content: "]"; }
+.liveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff6b4a;
+  box-shadow: 0 0 6px rgba(255, 107, 74, 0.9);
+  animation: liveDotPulse 1.2s ease-in-out infinite;
+}
+@keyframes liveOn {
+  0%, 26% { opacity: 0; }
+  27% { opacity: 1; }
+  28% { opacity: 0.15; }
+  29% { opacity: 1; }
+  30.5% { opacity: 0.35; }
+  32%, 87% { opacity: 1; }
+  93%, 100% { opacity: 0; }
+}
+@keyframes liveDotPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.65); opacity: 0.5; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal {
+    animation: none;
+  }
+  .terminal::before {
+    display: none;
+  }
+  .terminal::after {
+    opacity: 1;
+    animation: none;
+  }
+  .terminalBody > div,
+  .liveBadge {
+    animation: none;
+    opacity: 1;
+  }
+  .liveDot {
+    animation: none;
+  }
+}
+
 .terminalHead {
   display: flex;
   justify-content: space-between;
