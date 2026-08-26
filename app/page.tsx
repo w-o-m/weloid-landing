@@ -137,8 +137,14 @@ export default function HomePage() {
       <div className={styles.autopsyGrid}>
         <div className={styles.terminal}>
           <div className={styles.terminalHead}>
-            <span>AUTOPSY — LIVE</span>
             <span>repo: acquired-saas/main</span>
+            <span>
+              AUTOPSY —{" "}
+              <span className={styles.liveBadge}>
+                <span className={styles.liveDot} />
+                LIVE
+              </span>
+            </span>
           </div>
           <div className={styles.terminalBody}>
             <div>
