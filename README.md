@@ -1,5 +1,13 @@
 # WELOID
 
+## Website development
+
+Copy `.env.local.example` to `.env.local`. For local development, configure
+`WELOID_API_BASE_URL=http://127.0.0.1:8000`; use the HTTPS FastAPI service origin
+in production. The open-a-case form validates submissions and
+handles its honeypot in the website before forwarding requests to
+`POST /api/v1/public/cases`.
+
 ## Company, Product & Service Specification
 
 **Version:** 1.0

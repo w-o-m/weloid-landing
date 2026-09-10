@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CONSTANTS from "@/lib/constants";
+import ContactForm from "./ContactForm";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -30,16 +31,14 @@ export default function ContactPage() {
           </h1>
           <p className={styles.lead}>
             For software problems, send us the evidence. For partnerships,
-            questions, or everything else, use the direct line.
+            questions, or everything else, send a direct message.
           </p>
 
           <div className={styles.actions}>
             <Link href="/open-a-case" className="btn btn-shadow">
               OPEN A CASE
             </Link>
-            <a className="btn btn-outline" href={`mailto:${CONSTANTS.email}`}>
-              EMAIL US
-            </a>
+            <a className="btn btn-outline" href="#contact-form">MESSAGE US</a>
           </div>
 
           <div className={styles.directLine}>
@@ -48,30 +47,33 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <section className={styles.channels} aria-labelledby="social-heading">
-          <div className={styles.channelsHeader}>
-            <span id="social-heading">SOCIAL CHANNELS</span>
-            <span>{String(CONSTANTS.socials.length).padStart(2, "0")} ACTIVE</span>
-          </div>
-          <div className={styles.channelList}>
-            {CONSTANTS.socials.map((social, index) => (
-              <a
-                key={social.name}
-                className={styles.channel}
-                href={social.url}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className={styles.channelNumber}>
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className={styles.channelName}>{social.name}</span>
-                <span className={styles.channelHandle}>{social.handle}</span>
-                <span className={styles.channelArrow} aria-hidden="true">
-                  ↗
-                </span>
-              </a>
-            ))}
+        <section id="contact-form" className={styles.channels} aria-label="Contact form">
+          <ContactForm />
+          <div className={styles.socialBlock}>
+            <div className={styles.channelsHeader}>
+              <span>SOCIAL CHANNELS</span>
+              <span>{String(CONSTANTS.socials.length).padStart(2, "0")} ACTIVE</span>
+            </div>
+            <div className={styles.channelList}>
+              {CONSTANTS.socials.map((social, index) => (
+                <a
+                  key={social.name}
+                  className={styles.channel}
+                  href={social.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className={styles.channelNumber}>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className={styles.channelName}>{social.name}</span>
+                  <span className={styles.channelHandle}>{social.handle}</span>
+                  <span className={styles.channelArrow} aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              ))}
+            </div>
           </div>
         </section>
       </main>

@@ -155,6 +155,12 @@
   color: #b3411e;
   text-align: center;
 }
+.characterCount {
+  margin-top: 8px;
+  font: 400 10px/1.5 var(--font-mono);
+  color: var(--muted-2);
+  text-align: right;
+}
 .successPanel {
   text-align: center;
   padding: 20px 0;
@@ -167,6 +173,12 @@
   margin: 12px 0 0;
   font: 300 14px/1.6 var(--font-body);
   color: var(--muted-1);
+}
+.receipt {
+  margin: 20px 0 0;
+  font: 400 12px/1.7 var(--font-mono);
+  color: var(--muted-1);
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 860px) {
