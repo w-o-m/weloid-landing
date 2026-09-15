@@ -9,7 +9,7 @@ type ContactReceiptEnvelope = { data?: { referenceId?: unknown; receivedAt?: unk
 function contactsEndpoint() {
   const apiBaseUrl = process.env.WELOID_API_BASE_URL?.trim();
   if (!apiBaseUrl) throw new Error("Contact API is not configured.");
-  const url = new URL("/api/v1/public/contacts", apiBaseUrl);
+  const url = new URL("public/contacts", `${apiBaseUrl.replace(/\/+$/, "")}/`);
   if (url.protocol !== "https:" && process.env.NODE_ENV === "production") throw new Error("Contact API must use HTTPS.");
   if (url.protocol !== "https:" && url.protocol !== "http:") throw new Error("Invalid contact API protocol.");
   return url;

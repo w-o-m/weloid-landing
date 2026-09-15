@@ -29,7 +29,7 @@ function getCasesEndpoint() {
 
   let url: URL;
   try {
-    url = new URL("/api/v1/public/cases", apiBaseUrl);
+    url = new URL("public/cases", `${apiBaseUrl.replace(/\/+$/, "")}/`);
   } catch {
     throw new CaseConfigurationError("Case intake API URL is invalid.");
   }
