@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import CONSTANTS from "@/lib/constants";
+import { captureAnalyticsEvent } from "@/lib/analytics";
 import { CONTACT_LIMITS, parseContactIntake } from "@/lib/contact-intake";
 import styles from "./page.module.css";
 
@@ -14,6 +15,7 @@ export default function ContactForm() {
   const [receipt, setReceipt] = useState<ContactReceipt | null>(null);
   const formId = useId();
   const idempotencyKey = useRef<string | null>(null);
+  const analyticsStarted = useRef(false);
   const feedbackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -35,6 +37,9 @@ export default function ContactForm() {
     idempotencyKey.current ||= crypto.randomUUID();
 
     try {
+      captureAnalyticsEvent("contact_form_submitted", {
+        source_path: window.location.pathname,
+      });
       const response = await fetch("/api/contacts", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Idempotency-Key": idempotencyKey.current },
@@ -56,6 +61,9 @@ export default function ContactForm() {
       idempotencyKey.current = null;
       setReceipt(body.data);
       setStatus("success");
+      captureAnalyticsEvent("contact_form_succeeded", {
+        source_path: window.location.pathname,
+      });
     } catch {
       setError("Could not reach the server. Check your connection and try again.");
       setStatus("error");
@@ -86,7 +94,17 @@ export default function ContactForm() {
   }
 
   return (
-    <form className={styles.form} onSubmit={submit}>
+    <form
+      className={styles.form}
+      onSubmit={submit}
+      onFocusCapture={() => {
+        if (analyticsStarted.current) return;
+        analyticsStarted.current = true;
+        captureAnalyticsEvent("contact_form_started", {
+          source_path: window.location.pathname,
+        });
+      }}
+    >
       <input name="websiteUrl" type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" className={styles.honeypot} />
       <div className={styles.formHeader}><span>DIRECT MESSAGE</span><span>SECURE CHANNEL</span></div>
       <div className={styles.fieldRow}>

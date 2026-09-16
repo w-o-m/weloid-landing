@@ -8,6 +8,14 @@ in the HTTPS production URL. The open-a-case form validates submissions and
 handles its honeypot in the website before forwarding requests to
 `POST /api/v1/public/cases`.
 
+### Analytics
+
+PostHog and Google Analytics are optional and disabled when their public build-time variables are
+unset. Configure `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN`, `NEXT_PUBLIC_POSTHOG_HOST`, and
+`NEXT_PUBLIC_GA_MEASUREMENT_ID` in Coolify before building the website. Tracking covers SPA
+pageviews, internal navigation and CTA clicks, and privacy-safe case/contact funnel events. Form
+values, email addresses, submission text, and receipt references are never sent to analytics.
+
 ## Company, Product & Service Specification
 
 **Version:** 1.0

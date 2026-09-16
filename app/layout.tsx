@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -75,6 +77,9 @@ export default function RootLayout({
       </head>
       <body>
         <main>{children}</main>
+        <Suspense fallback={null}>
+          <GoogleAnalytics />
+        </Suspense>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_SCHEMA) }}
