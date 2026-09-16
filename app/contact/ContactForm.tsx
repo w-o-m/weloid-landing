@@ -6,10 +6,12 @@ import { CONTACT_LIMITS, parseContactIntake } from "@/lib/contact-intake";
 import styles from "./page.module.css";
 
 type Status = "idle" | "submitting" | "success" | "error";
+type ContactReceipt = { referenceId: string; receivedAt: string };
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+  const [receipt, setReceipt] = useState<ContactReceipt | null>(null);
   const formId = useId();
   const idempotencyKey = useRef<string | null>(null);
   const feedbackRef = useRef<HTMLDivElement>(null);
@@ -52,6 +54,7 @@ export default function ContactForm() {
       }
       form.reset();
       idempotencyKey.current = null;
+      setReceipt(body.data);
       setStatus("success");
     } catch {
       setError("Could not reach the server. Check your connection and try again.");
@@ -60,7 +63,26 @@ export default function ContactForm() {
   }
 
   if (status === "success") {
-    return <div ref={feedbackRef} role="status" tabIndex={-1} className={styles.success}><strong>Message received.</strong><p>We&apos;ll reply from a real inbox as soon as we can.</p></div>;
+    return (
+      <div ref={feedbackRef} role="status" tabIndex={-1} className={styles.success}>
+        <strong>Message received.</strong>
+        <p>We&apos;ll reply from a real inbox as soon as we can.</p>
+        <p>
+          Reference <strong>{receipt?.referenceId}</strong>
+          <br />
+          Received{" "}
+          <time dateTime={receipt?.receivedAt}>
+            {receipt?.receivedAt
+              ? new Intl.DateTimeFormat("en-GB", {
+                  dateStyle: "medium",
+                  timeStyle: "short",
+                  timeZone: "UTC",
+                }).format(new Date(receipt.receivedAt)) + " UTC"
+              : ""}
+          </time>
+        </p>
+      </div>
+    );
   }
 
   return (

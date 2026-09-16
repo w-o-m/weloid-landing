@@ -108,7 +108,16 @@ export default function CaseForm({ initialCaseType, initialStatement }: CaseForm
         <p className={styles.receipt}>
           Reference <strong>{receipt?.referenceId}</strong>
           <br />
-          Received <time dateTime={receipt?.receivedAt}>{receipt?.receivedAt}</time>
+          Received{" "}
+          <time dateTime={receipt?.receivedAt}>
+            {receipt?.receivedAt
+              ? new Intl.DateTimeFormat("en-GB", {
+                  dateStyle: "medium",
+                  timeStyle: "short",
+                  timeZone: "UTC",
+                }).format(new Date(receipt.receivedAt)) + " UTC"
+              : ""}
+          </time>
         </p>
       </div>
     );
