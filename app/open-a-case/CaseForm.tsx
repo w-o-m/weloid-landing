@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
+import { captureAnalyticsEvent } from "@/lib/analytics";
 import { CASE_LIMITS, CASE_TYPES, combineCaseDetails, isCaseType, parseCaseIntake } from "@/lib/case-intake";
 import styles from "./page.module.css";
 
@@ -23,6 +24,7 @@ export default function CaseForm({ initialCaseType, initialStatement }: CaseForm
   const [evidence, setEvidence] = useState("");
   const formId = useId();
   const idempotencyKey = useRef<string | null>(null);
+  const analyticsStarted = useRef(false);
   const feedbackRef = useRef<HTMLDivElement>(null);
   const combinedLength = combineCaseDetails(statement.trim(), evidence.trim()).length;
 
@@ -58,6 +60,10 @@ export default function CaseForm({ initialCaseType, initialStatement }: CaseForm
     }
 
     try {
+      captureAnalyticsEvent("case_form_submitted", {
+        case_type: caseType,
+        source_path: window.location.pathname,
+      });
       const res = await fetch("/api/cases", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Idempotency-Key": idempotencyKey.current },
@@ -85,6 +91,10 @@ export default function CaseForm({ initialCaseType, initialStatement }: CaseForm
 
       setReceipt(body.data);
       setStatus("success");
+      captureAnalyticsEvent("case_form_succeeded", {
+        case_type: caseType,
+        source_path: window.location.pathname,
+      });
       idempotencyKey.current = null;
       form.reset();
       setStatement("");
@@ -108,14 +118,33 @@ export default function CaseForm({ initialCaseType, initialStatement }: CaseForm
         <p className={styles.receipt}>
           Reference <strong>{receipt?.referenceId}</strong>
           <br />
-          Received <time dateTime={receipt?.receivedAt}>{receipt?.receivedAt}</time>
+          Received{" "}
+          <time dateTime={receipt?.receivedAt}>
+            {receipt?.receivedAt
+              ? new Intl.DateTimeFormat("en-GB", {
+                  dateStyle: "medium",
+                  timeStyle: "short",
+                  timeZone: "UTC",
+                }).format(new Date(receipt.receivedAt)) + " UTC"
+              : ""}
+          </time>
         </p>
       </div>
     );
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form
+      className={styles.form}
+      onSubmit={handleSubmit}
+      onFocusCapture={() => {
+        if (analyticsStarted.current) return;
+        analyticsStarted.current = true;
+        captureAnalyticsEvent("case_form_started", {
+          source_path: window.location.pathname,
+        });
+      }}
+    >
       <input
         type="text"
         name="websiteUrl"
